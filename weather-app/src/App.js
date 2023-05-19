@@ -15,7 +15,16 @@ function App() {
   };
 
 
-
+  const handleSearch = async () => {
+    const API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
+    const geocodeResponse = await axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+        address
+      )}&key=${API_KEY}`
+    );
+    const { lat, lng } = geocodeResponse.data.results[0].geometry.location;
+    await fetchWeatherData(lat, lng);
+  };
   
 }
 
