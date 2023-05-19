@@ -13,7 +13,10 @@ function App() {
     );
     setWeatherData(response.data);
   };
-
+  
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
 
   const handleSearch = async () => {
     const API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
