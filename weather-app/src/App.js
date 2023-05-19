@@ -29,6 +29,28 @@ function App() {
     await fetchWeatherData(lat, lng);
   };
   
+  return (
+    <div className="container">
+      <h1>Weather App</h1>
+      <div className="search-bar">
+        <input
+          type="text"
+          value={address}
+          onChange={handleAddressChange}
+          placeholder="Enter address"
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      {weatherData && (
+        <div className="weather-info">
+          <h2>Current Weather</h2>
+          <p>Location: {weatherData.name}</p>
+          <p>Temperature: {weatherData.main.temp}°C</p>
+          <p>Description: {weatherData.weather[0].description}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default App;
